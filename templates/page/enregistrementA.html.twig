@@ -1,0 +1,494 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Enregistrement Accueilli' %}
+
+{% block body %}
+  <div class="container mt-4" >
+    <center><h1>Enregistrement</h1></center>
+
+  
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">
+
+
+      <label>Information de l'accueilli :</label><br>
+      <input list="Information" id="JSP" name="information" />
+
+      <!-- Ici on nous pouvons chercher tous les informations concernant les acceuillis -->
+      
+        <datalist id="Information">
+        <!-- Ici nous avons le block qui nous permet d'afficher tous les accueillis grâce au property -->
+        {% for property in property %}
+            <option value=" {{ property.qualite }}&nbsp;{{ property.nom }}&nbsp;{{ property.prenom }} ">
+        {% endfor %}
+        </datalist>
+
+      </th>
+      <th scope="col"><button type="button" class="btn btn-success" href="#">Nouvel accueilli</button></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">
+        <label>Genre</label><br>
+        <input list="genre" id="Genre" name="Genre" />
+
+        <datalist id="genre">
+           <OPTION value="monsieur">
+           <OPTION value="madame">
+           <OPTION value="enfant">
+        </datalist><br><br>
+
+      
+
+      </th>
+      <td>
+      <label>Nom de l'accueilli :</label><br>
+        <form>
+          <div class="form-row">
+            <div class="col">
+              <p  id="log"><input type="text" class="form-control" placeholder="Nom" name="nom" id="log"></p>
+              
+            </div>
+          </div>
+        </form>
+      </td>
+      <td>
+      <label>Prénom de l'accueilli :</label><br>
+        <form>
+          <div class="form-row">
+            <div class="col">
+            <input type="text" class="form-control" placeholder="Prénom" name="prenom">
+            </div>
+          </div>
+        </form>
+        
+      </td>
+      <td>
+        
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+    <!-- ici nous avons le collapse qui va nous permettre d'afficher l'état civil etc.....  -->
+    <div id="accordion">
+      <div class="card">
+        <div class="card-header" id="headingOne">
+          <h5 class="mb-0">
+            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              État civil
+            </button>
+          </h5>
+        </div>
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+          <div class="card-body">
+
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td>
+                  <!-- Nous avons un élément qui permet d'afficher et chercher une date -->
+                    <label>Date de Naissance :</label><br>
+                    <form>
+                        <div class="nativeDatePicker">
+                             <input type="date" id="bday" name="naissance">
+                             <span class="validity"></span>
+                        </div>
+                    </form>
+                  </td>
+                  <td>
+                    <label>Ville de naissance :</label>
+                    <form>
+                      <div class="form-row">
+                        <div class="col">
+                          <input type="text" class="form-control" placeholder="Ville" name="villeN">
+                        </div>
+                    </form>
+                  </td>
+                  <td>
+
+                    <label>Sexe</label><br>
+                    <input list="Sexe" id="sexe" name="sexe" />
+
+                    <datalist id="Sexe">
+                        <OPTION value="M">
+                        <OPTION value="F">
+                    </datalist>
+
+
+                  </td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <label>Nationalité :</label><br>
+
+                    <input list="Nationalité" id="nationalité" name="nationalité" />
+
+                    <datalist id="Nationalité">
+                        <option value="France">
+                        <option value="Japon">
+                    </datalist>
+
+                  </td>
+                  <td>
+                    <label>Age de l'accueilli:</label>
+                    <form>
+                      <div class="form-row">
+                        <div class="col">
+                          <input type="text" class="form-control" placeholder="Age" name="age">
+                        </div>
+                    </form>
+                  </td>
+                  <td>
+                  <!-- Nous avons une checkbox pour savoir si la personnes est isolée ou non -->
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        Isolé ?
+                      </label>
+                    </div>
+                  </td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <label>Date d'arrivée en France</label>
+                    <form>
+                        <div class="nativeDatePicker">
+                             <input type="date" id="bday" name="arrivé">
+                             <span class="validity"></span>
+                        </div>
+                     </form>
+                  </td>
+                  <td></td>
+                  <td>
+                    <button type="button" class="btn btn-success">Valider</button>
+                  </td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <label>Prescripteur</label><br>
+
+                    <input list="Prescripteur" id="prescripteur" name="prescripteur" />
+
+                    <datalist id="Prescripteur">
+                        <OPTION value="115">
+                        <OPTION value="Autre">
+                        <OPTION value="CCAS">
+                        <OPTION value="Connaissance">
+                        <OPTION value="Foyer d'Urgence">
+                        <OPTION value="Maraude Emergence">
+                        <OPTION value="Maraude Partenaire">
+                        <OPTION value="Inconnu">
+                    </datalist>
+
+                  </td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+      <!-- ici nous avons le collapse qui va nous permettre d'afficher la situation actuelle d'un acceuilli etc.....  -->
+      <div class="card">
+        <div class="card-header" id="headingTwo">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              Situation Actuelle
+            </button>
+          </h5>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+          <div class="card-body">
+            
+
+            <table class="table">
+              <tbody>
+
+                <tr>
+                  <td>
+                    <label>Ressources</label><br>
+
+                      <input list="Ressources" id="ressources" name="ressources" />
+
+                    <datalist id="Ressources">
+                        <OPTION value="DA">
+                        <OPTION value="DEMANDE DE TITRE DE SEJOUR 5 OU 10 ANS">
+                        <OPTION value="DEMANDE DE TITRE DE SEJOUR MALADIE">
+                        <OPTION value="DEMANDEUR D'ASILE DUBLIN">
+                        <OPTION value="DROIT COMMUN + CARTE/TITRE DE SEJOUR">
+                        <OPTION value="DROIT COMMUN + CNI">
+                        <OPTION value="INCONNUE">
+                        <OPTION value="OQTF">
+                        <OPTION value="RECONNU REFUGIE">
+                        <OPTION value="REFUGIE">
+                        <OPTION value="RESSORTISSANT EUROPEEN">
+                        <OPTION value="SANS TITRE DE SEJOUR">
+                        <OPTION value="VISA ETUDIANT">
+                    </datalist>
+
+                    <br><br>
+                    <input list="Ressources2" id="ressources2" name="ressources2" />
+
+                    <datalist id="Ressources2">
+                        <OPTION value="A.T.A.">
+                        <OPTION value="AAH">
+                        <OPTION value="ADA">
+                        <OPTION value="ARE">
+                        <OPTION value="ASSEDIC">
+                        <OPTION value="ATTENTE PREMIER VERSEMENT DU RSA">
+                        <OPTION value="AUTRES">
+                        <OPTION value="FORM STAGE">
+                        <OPTION value="GARANTIE JEUNE">
+                        <OPTION value="INCONNUES">
+                        <OPTION value="INTERMITANT DU SPECTACLE">
+                        <OPTION value="RETRAITE/PENSION">
+                        <OPTION value="RSA">
+                        <OPTION value="SALAIRE">
+                        <OPTION value="SANS RESSOURCES">
+                        <OPTION value="SANS RESSOURCES NON ÉLIGIBLE">
+                      </datalist>
+                    
+                  </td>
+                  <td>
+                    
+                    <label>Hébergement</label><br>
+
+                    <input list="Hébergement" id="hébergement" name="hébergement" />
+
+                    <datalist id="Hébergement">
+                        <OPTION value="Autres">
+                        <OPTION value="CADA">
+                        <OPTION value="Caravane">
+                        <OPTION value="Chambre meublé">
+                    </datalist>
+
+                    <br>
+                    <label>Domiciliation</label><br>
+
+                    <input list="Domiciliation" id="domiciliation" name="domiciliation" />
+
+                    <datalist id="Domiciliation">
+                        <OPTION value="Adoma">
+                        <OPTION value="Autre">
+                        <OPTION value="Casous">
+                        <OPTION value="CCAS indre et Loire">
+                    </datalist>
+
+
+                  </td>
+                  <td>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        Actuel ?
+                      </label>
+                    </div><br>
+                    <button type="button" class="btn btn-secondary">Nouvelle Situation</button><br><br>
+                    <button type="button" class="btn btn-warning">Annuler</button>
+                  </td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <label>Protection</label>
+                    <FORM>
+                        <SELECT name="Protection" size="1">
+                          <OPTION>Curatelle
+                          <OPTION>Non
+                          <OPTION>Tutelle
+                        </SELECT>
+                      </FORM> 
+                  </td>
+                  <td>
+
+                      <p>
+                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                          Suivi Social
+                        </button>
+                      </p>
+                      <div class="collapse" id="collapseExample">
+                          <form>
+                            <div class="form-row">
+                              <div class="col">
+                                <input type="text" class="form-control" placeholder="Suivi">
+                              </div>
+                            </div>
+                          </form>
+                      </div>
+
+                  </td>
+                  <td><br>
+                    <button type="button" class="btn btn-success">Valider</button>
+                  </td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <label>Droit à la sante</label>
+                    <FORM>
+                        <SELECT name="Droit à la santé" size="1">
+                          <OPTION>Ame
+                          <OPTION>Cmu
+                          <OPTION>Cmu complémentaire
+                          <OPTION>sans
+                        </SELECT>
+                      </FORM>
+
+                  </td>
+                  <td>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        Mobilité Réduite
+                      </label>
+                    </div>
+                  </td>
+                  <td>
+                  <label>Appel du 115 :<label>
+                  <p>
+                      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        oui/non
+                      </button>
+                    </p>
+                    <div class="collapse" id="collapseExample">
+                          <form>
+                            <div class="form-row">
+                              <div class="col">
+                                <input type="text" class="form-control" placeholder="Pourquoi ?">
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                  </td>
+                  <td>
+                    
+                  </td>
+                </tr>
+
+                <tr>
+                  <td><br>
+                    
+                    <p>
+                      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        Animal de Compagnie
+                      </button>
+                    </p>
+                    <div class="collapse" id="collapseExample">
+                          <form>
+                            <div class="form-row">
+                              <div class="col">
+                                <input type="text" class="form-control" placeholder="Quel animal ?">
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                    
+                      
+                  </td>
+                  <td>
+                    <div class="form-group">
+                      <label for="exampleFormControlTextarea1">Observation</label>
+                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                  </td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+
+
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+      <!-- ici nous avons le collapse qui va nous permettre d'afficher l'ancienne situation des acceuilli etc.....  -->
+      <div class="card">
+        <div class="card-header" id="headingThree">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              Anciennes situations
+            </button>
+          </h5>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+          <div class="card-body">
+            
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Date_Situation</th>
+                  <th scope="col">Hebergement</th>
+                  <th scope="col">Ressources</th>
+                  <th scope="col">Situation Administrative</th>
+                  <th scope="col">Suivi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>...</td>
+                  <td>...</td>
+                  <td>...</td>
+                  <td>...</td>
+                  <td>...</td>
+                </tr>
+                </tr>
+              </tbody>
+            </table>
+
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<<<<<<< HEAD
+      
+=======
+
+      <!-- ici on gére l'affichage d'élément -->
+      <script>
+        const input = document.getElementById('JSP');
+        const log = document.getElementById('log');
+
+        input.addEventListener('change', updateValue);
+
+        function updateValue(e) {
+          log.textContent = e.target.value;
+        }
+      </script>
+
+
+>>>>>>> Acceuillis
+{% endblock %}

@@ -1,0 +1,172 @@
+{% extends 'base.html.twig' %}
+
+{% block title "Enregistrement d'une session" %}
+
+{% block body %}
+    <div class="container mt-4" >
+        <center><h1>Enregistrement d'une Session</h1></center><br>
+        <center><h2>Une session est une activité à une date donnée</h2></center>
+        
+
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">
+                            </label>Choisir l'activité de la session</label><br>
+                            </label>Choisir la date de la session</label><br>
+                            </label>Valider</label>
+                        </th>
+                        <th scope="col">
+
+                        <label>Activitée</label><br>
+
+                        <input list="Activitée" id="activitée" name="activitée" />
+
+                        <datalist id="Activitée">
+                            <OPTION value="Halte du matin">
+                            <OPTION value="Repas du midi">
+                            <OPTION value="Halte du jour">
+                            <OPTION value="Domiciliation">
+                            <OPTION value="Bagagerie">
+                            <OPTION value="Accueil de famille">
+                            <OPTION value="Nuitée">
+                            <OPTION value="Cinéma">
+                            <OPTION value="Piscine">
+                            <OPTION value="Sortie">
+                        </datalist><br><br>
+
+
+                        </th>
+                        <th scope="col">
+                            <form>
+                                <div class="nativeDatePicker">
+                                <label for="bday">Veuillez saisir votre date  :</label><br>
+                                <input type="date" id="bday" name="bday">
+                                <span class="validity"></span>
+                                </div>
+                                </div>
+                            </form>
+                        </th>
+                        <th scope="col">
+                            <button type="button" class="btn btn-success">
+                                <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                                <link rel="stylesheet" media="all" title="style de la page" href="afficher_cacher_div.css" />
+                                <script type="text/javascript" src="afficher_cacher_div.js"></script>
+                                <span class="bouton" id="bouton_texte" onclick="javascript:afficher_cacher('texte');">Valider</span>
+                            </button>
+                        </th>
+                        </tr>
+                    </thead>
+                <table>
+
+
+
+            
+                
+            <table class="table">
+            <tbody>
+                <td>
+                
+                <div id="texte" class="texte">
+
+                    <label>Pour inscrir un nouveau participant, il faut :</label><br>
+                    <label>Cliquez sur le bouton "nouveau participant"</label><br>
+                    <label>Choisir le participant</label><br>
+                    <label>Cliquez sur le bouton "Valider"</label><br>
+                    <label>Si le participant est déja inscrit à cette session, un<br>message d'erreur apparaîtra.</label><br>
+                    <label>le cadreci-contre liste les participants déjà inscrits</label><br><br>
+
+                    <button type="button" class="btn btn-secondary">Nouveau Participant</button><br><br>
+
+                    <label>Recherche par Nom</label><br>
+                    <input list="Nom" id="nom" name="nom" />
+
+                            <datalist id="Nom">
+                                {% for property in property %}
+                                    <option value="{{ property.nom }}">
+                                {% endfor %}
+                            </datalist><br>
+
+                    <label>Recherche par Prénom</label><br>
+                    <input list="Acceuilli" id="acceuilli" name="acceuilli" />
+
+                            <datalist id="Acceuilli">
+                                {% for property in property %}
+                                    <option value="{{ property.prenom }}">
+                                {% endfor %}
+                            </datalist><br><br>
+                    <div class="btn-toolbar">
+                        <button type="button" class="btn btn-success">valider</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button type="button" class="btn btn-success"><a href="{{ path('page.enregistrementA') }}"><font color="white">Nouvel Accueilli</font></a></button>
+                    </div>
+
+                </div>
+            </td>
+                <td></td>
+                <td></td>
+                <td>
+
+                <style>
+                    div.ex1 {
+                    background-color: lightgrey;
+                    width: 700px;
+                    height: 500px;
+                    overflow: scroll;
+                    }
+                </style>
+
+                <input type="button" onclick='window.location.reload(false)' value="Actualiser la liste de contrôle" class="btn btn-success"/>
+                <label for="tentacles">Nombre de participant  :</label>
+                <input type="number" id="tentacles" name="tentacles" min="0"><br>
+                <br><br>
+                <div class="ex1"><div class="container">
+                    <div class="row changingBG">
+                        <div class="col-lg-2"><h4>Qualite</h4></div>
+                        <div class="col-lg-3"><h4>Nom</h4></div>
+                        <div class="col-lg-3"><h4>Prénom</h4></div>
+                        <div class="col-lg-4"><h4>Date de Naissance</h4></div>
+                    </div>
+                    <!-- Ici nous devrons notez les personnes qui participe aux activités -->
+                    {% for property in property %}
+                            <div class="row changingBG">
+                                <div class="col-lg-2">{{ property.Qualite}}</div>
+                                <div class="col-lg-3">{{ property.Nom}} </div>
+                                <div class="col-lg-3">{{ property.Prenom}}</div>
+                                <div class="col-lg-4">{{ property.datenaissance | date('d-m-y')}}</div>
+                            </div>
+                    {% endfor %}
+
+                </div>
+            </td>
+            </tbody>
+            </table>
+
+            <script>
+            function afficher_cacher(id)
+            {
+                if(document.getElementById(id).style.visibility=="visible")
+                {
+                    document.getElementById(id).style.visibility="hidden";
+                    document.getElementById('bouton_'+id).innerHTML='Valider';
+                }
+                else
+                {
+                    document.getElementById(id).style.visibility="visible";
+                    document.getElementById('bouton_'+id).innerHTML='Valider';
+                }
+                return true;
+            }
+            </script>
+
+
+
+
+
+
+
+            
+            
+
+    </div>
+{% endblock %}

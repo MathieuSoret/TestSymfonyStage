@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+
+{% block title "Enregistrement d'une famille" %}
+
+{% block body %}
+  <div class="container mt-4" >
+    <center><h1>Enregistrement d'une famille</h1></center>
+    <br><br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">
+                    
+                    <input list="Nom" id="nom" name="nom" />
+
+                    <datalist id="Nom">
+                        <OPTION value="Mathieu">
+                        <OPTION value="Mathis">
+                        <OPTION value="Jean">
+                        <OPTION value="Paul">
+                    </datalist><br><br>
+
+                    <br>
+                    <button type="button" class="btn btn-success" href="#">Nouvelle Famille</button>
+                </th>
+                <th scope="col">
+                    <label> Une famille est repérée par le nom d'un de ses membres.</label>
+                    <label> Chaque membre est repéé par son nom, son prénom et sa date de naissance à cause des homonymies.</label>
+                    <label> Sélectionner une famille ou cliquer sur Nouvelle Famille.</label>
+                </th>
+            </tr>
+        </thead>
+    </table>
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">Mise à jour de la composition de la famille </th>
+            <th scope="col">Suite de l'enregistrement</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">
+                    <label>Pour inscrire un nouveau membre, il faut :</label><br>
+                    <label>Cliquer sur le bouton "nouveau membre"</label><br>
+                    <label>Choisir le nouveau membre et son lien familial</label><br>
+                    <label>Cliquer sur le bouton "valider"</label><br>
+                    <label>S'il est déjà inscrit dans cette famille, un message d'erreur apparaîtra.</label><br>
+                    <label>Le cadre ci-contre liste les membres déjà inscrit dans cette famille.</label><br><br>
+                    <button type="button" class="btn btn-success" href="#">Nouveau membre</button>
+                    <a href="{{ path('page.enregistrementA') }}"><font color="green">Saisir nouveau membre</font></a><br><br>
+                    
+
+                    <label>Nom/Prenom de l'accueilli</label><br>
+
+                    <input list="Accueilli" id="accueilli" name="accueilli" />
+
+                    <datalist id="Accueilli">
+                        <OPTION value="Mathieu">
+                        <OPTION value="Mathis">
+                        <OPTION value="Jean">
+                        <OPTION value="Paul">
+                    </datalist><br><br>
+
+
+                    <label>Genre</label><br>
+                    <input list="Genre" id="genre" name="genre" />
+
+                    <datalist id="Genre">
+                        <OPTION value="Fille">
+                        <OPTION value="Fils">
+                        <OPTION value="Grand-mère">
+                        <OPTION value="Grand-père">
+                        <OPTION value="Membre">
+                        <OPTION value="Mère">
+                        <OPTION value="Père">
+                    </datalist><br><br>
+
+                    <label>Si le nom du nouveau membre est introuvable</label><br>
+                    <label>Cliquer sur Annuler</label><br>
+                    <label>Cliquer sur Saisir nouvel Accueilli</label><br><br>
+                    <button type="button" class="btn btn-warning">Annuler</button>
+                    <button type="button" class="btn btn-success">Valider</button>
+
+                </th>
+
+
+
+                <td>
+                    <label for="tentacles">Adultes:</label>
+                    <input type="number" id="tentacles" name="tentacles" min="0"><br>
+
+                    <label for="tentacles">Enfants:</label>
+                    <input type="number" id="tentacles" name="tentacles"min="0"><br>
+
+                    <button type="button" class="btn btn-success">Actualiser</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+  </div>
+      
+{% endblock %}
